@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class Smoke extends SkillItem
 {
+    public static final int RADIUS = 4;
+    public static final int DURATION = 10;
+
     public Smoke(Properties properties)
     {
-        super(properties, ClassType.ATTACK);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("在落地点创建一片烟雾"));
-        tooltips.add(Component.literal("半径为 4，持续 10 秒"));
+        super(properties, 3, ClassType.ATTACK);
+        tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.2", RADIUS, DURATION));
     }
     
     @Override

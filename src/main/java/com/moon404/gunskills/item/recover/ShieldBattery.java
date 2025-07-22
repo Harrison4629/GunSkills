@@ -14,7 +14,7 @@ public class ShieldBattery extends RecoverItem
     public ShieldBattery(Item.Properties properties)
     {
         super(properties);
-        tooltips.add(Component.literal("完全恢复护盾"));
+        tooltips.add(Component.translatable("item.gunskills.shield_battery.tooltip"));
     }
 
     public int getUseDuration(ItemStack stack)
@@ -28,7 +28,7 @@ public class ShieldBattery extends RecoverItem
         {
             if (player.hasEffect(GunSkillsEffects.SILENCE.get()))
             {
-                player.displayClientMessage(Component.literal("被禁疗无法使用"), true);
+                player.displayClientMessage(Component.translatable("message.gunskills.recover.disable"), true);
                 return stack;
             }
             float shield = player.experienceLevel * 4 + 4;

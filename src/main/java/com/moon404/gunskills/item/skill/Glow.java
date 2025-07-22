@@ -15,11 +15,13 @@ import net.minecraft.world.level.Level;
 
 public class Glow extends SkillItem
 {
+    public static final int RADIUS = 32;
+    public static final int DURATION = 3;
+
     public Glow(Properties properties)
     {
-        super(properties, ClassType.SCOUT);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("使 32 格范围内的敌对玩家发光 3 秒"));
+        super(properties, 2, ClassType.SCOUT);
+        tooltips.add(Component.translatable("item.gunskills.glow.tooltip", RADIUS, DURATION));
     }
 
     @Override
@@ -31,23 +33,23 @@ public class Glow extends SkillItem
         List<Player> players = new ArrayList<>();
         for (Player target : level.players())
         {
-            if (!target.isSpectator() && player.distanceTo(target) < 32 && player.getTeam() != target.getTeam())
+            if (!target.isSpectator() && player.distanceTo(target) < RADIUS && player.getTeam() != target.getTeam())
             {
                 players.add(target);
             }
         }
         if (Purify.purified(players))
         {
-            player.displayClientMessage(Component.literal("上帝之眼效果被净化"), true);
+            player.displayClientMessage(Component.translatable("skill.gunskills.glow.purify"), true);
         }
         else
         {
             for (Player target : players)
             {
-                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false, true));
-                GlowMessage.sendToTeam(player.getTeam(), target, 60);
+                target.addEffect(new MobEffectInstance(MobEffects.GLOWING, DURATION * 20, 0, false, false, true));
+                GlowMessage.sendToTeam(player.getTeam(), target, DURATION * 20);
             }
-            player.displayClientMessage(Component.literal("扫描敌人数：" + players.size()), true);
+            player.displayClientMessage(Component.translatable("skill.gunskills.glow.effect", players.size()), true);
         }
         return true;
     }

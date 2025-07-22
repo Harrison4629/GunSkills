@@ -14,10 +14,9 @@ public class Purify extends SkillItem
 {
     public Purify(Properties properties)
     {
-        super(properties, ClassType.SUPPORT);
-        tooltips.add(Component.literal("放在副手，被动生效并消耗"));
-        tooltips.add(Component.literal("被技能效果命中时"));
-        tooltips.add(Component.literal("取消该技能的所有目标"));
+        super(properties, 1, ClassType.SUPPORT);
+        tooltips.add(Component.translatable("item.gunskills.purify.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.purify.tooltip.2"));
     }
 
     public static boolean purified(List<Player> players)
@@ -28,7 +27,7 @@ public class Purify extends SkillItem
             if (offhandStack.getItem() == GunSkillsItems.PURIFY.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.SUPPORT)
             {
                 offhandStack.setCount(offhandStack.getCount() - 1);
-                player.displayClientMessage(Component.literal("净化粉阻挡了一次技能"), true);
+                player.displayClientMessage(Component.translatable("skill.gunskills.purify.effect"), true);
                 return true;
             }
         }

@@ -1,5 +1,7 @@
 package com.moon404.gunskills.entity;
 
+import com.moon404.gunskills.item.skill.Lift;
+
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -20,7 +22,7 @@ public class LiftEntity extends Marker
     @Override
     public void tick()
     {
-        if (this.tickCount >= 100)
+        if (this.tickCount >= Lift.DURATION)
         {
             this.kill();
             return;

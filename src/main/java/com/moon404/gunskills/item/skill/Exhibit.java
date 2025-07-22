@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class Exhibit extends SkillItem
 {
+    public static final int RADIUS = 16;
+    public static final int DURATION = 3;
+
     public Exhibit(Properties properties)
     {
-        super(properties, ClassType.SCOUT);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("对落地点半径为 6 范围的敌人"));
-        tooltips.add(Component.literal("给与 5 秒发光效果"));
+        super(properties, 3, ClassType.SCOUT);
+        tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.1", RADIUS));
+        tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.2", DURATION));
     }
 
     @Override

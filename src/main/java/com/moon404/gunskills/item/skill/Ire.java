@@ -6,10 +6,11 @@ import net.minecraft.network.chat.Component;
 
 public class Ire extends SkillItem
 {
+    public static final int DURATION = 5;
+
     public Ire(Properties properties)
     {
-        super(properties, ClassType.SCOUT);
-        tooltips.add(Component.literal("放在副手，被动生效并消耗"));
-        tooltips.add(Component.literal("造成伤害时令目标发光 5 秒"));
+        super(properties, 1, ClassType.SCOUT);
+        tooltips.add(Component.translatable("item.gunskills.ire.tooltip", DURATION));
     }
 }

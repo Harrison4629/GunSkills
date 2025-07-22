@@ -18,13 +18,15 @@ import net.minecraft.world.level.Level;
 
 public class SkillItem extends Item
 {
+    public int useType;
     public ClassType classType;
     protected List<Component> tooltips;
 
-    public SkillItem(Properties properties, ClassType type)
+    public SkillItem(Properties properties, int useType, ClassType classType)
     {
         super(properties);
-        this.classType = type;
+        this.useType = useType;
+        this.classType = classType;
         this.tooltips = new ArrayList<>();
     }
     
@@ -74,9 +76,8 @@ public class SkillItem extends Item
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
     {
         if (this.classType != null)
-        {
-            pTooltipComponents.add(Component.literal("职业限制：").append(this.classType.getDisplay()));
-        }
+            pTooltipComponents.add(Component.translatable("skill.gunskills.class.limit").append(this.classType.getDisplay()));
+        pTooltipComponents.add(Component.translatable("skill.gunskills.use." + this.useType));
         pTooltipComponents.addAll(tooltips);
     }
 }

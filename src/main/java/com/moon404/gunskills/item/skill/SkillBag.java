@@ -41,9 +41,8 @@ public class SkillBag extends SkillItem
 
     public SkillBag(Properties properties)
     {
-        super(properties, null);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("根据自己的职业获得一个技能物品"));
+        super(properties, 2, null);
+        tooltips.add(Component.translatable("item.gunskills.skill_bag.tooltip"));
     }
 
     @Override

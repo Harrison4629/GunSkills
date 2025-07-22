@@ -12,15 +12,16 @@ import net.minecraft.world.item.ItemStack;
 
 public class EnterVoid extends SkillItem
 {
+    public static final int DURATION = 5;
+
     public EnterVoid(Properties properties)
     {
-        super(properties, ClassType.ROGUE);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("获得 5 秒隐身与失明"));
-        tooltips.add(Component.literal("手持物品会提前结束效果"));
-        tooltips.add(Component.literal("被发光时也会提前结束效果"));
-        tooltips.add(Component.literal("生效时如果背包有空位"));
-        tooltips.add(Component.literal("会自动将手持物品放入背包"));
+        super(properties, 2, ClassType.ROGUE);
+        tooltips.add(Component.translatable("item.gunskills.void.tooltip.1", DURATION));
+        tooltips.add(Component.translatable("item.gunskills.void.tooltip.2"));
+        tooltips.add(Component.translatable("item.gunskills.void.tooltip.3"));
+        tooltips.add(Component.translatable("item.gunskills.void.tooltip.4"));
+        tooltips.add(Component.translatable("item.gunskills.void.tooltip.5"));
     }
 
     private static int getFreeSlot(Inventory inventory)
@@ -61,8 +62,8 @@ public class EnterVoid extends SkillItem
                 inventory.removeItem(itemStack);
             }
         }
-        player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, 100, 0, false, false, true));
-        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 100, 0, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, DURATION * 20, 0, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, DURATION * 20, 0, false, false, true));
         return true;
     }
 }

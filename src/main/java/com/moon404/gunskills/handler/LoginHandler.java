@@ -15,8 +15,8 @@ public class LoginHandler
     public static void onLogin(PlayerLoggedInEvent event)
     {
         Player player = event.getEntity();
-        player.sendSystemMessage(Component.literal("欢迎使用枪战技能（GunSkills）MOD，当前职业：").append(ClassType.getClass(player).getDisplay()));
-        player.sendSystemMessage(Component.literal("您可以点击下面的职业或使用/class指令来选择职业"));
+        player.sendSystemMessage(Component.translatable("message.gunskills.login.1").append(ClassType.getClass(player).getDisplay()));
+        player.sendSystemMessage(Component.translatable("message.gunskills.login.2"));
         for (ClassType type : ClassType.values())
         {
             player.sendSystemMessage(type.getHelper());

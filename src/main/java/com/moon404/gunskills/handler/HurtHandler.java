@@ -2,6 +2,8 @@ package com.moon404.gunskills.handler;
 
 import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.item.skill.Fast;
+import com.moon404.gunskills.item.skill.Ire;
 import com.moon404.gunskills.message.DamageIndicatorMessage;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.ShowDamageMessage;
@@ -72,10 +74,10 @@ public class HurtHandler
             ItemStack itemStack = from.getOffhandItem();
             if (itemStack.getItem() == GunSkillsItems.IRE.get() && !event.getEntity().hasEffect(MobEffects.GLOWING) && !from.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(from) == ClassType.SCOUT)
             {
-                event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false, true));
+                event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, Ire.DURATION * 20, 0, false, false, true));
                 if (event.getEntity() instanceof Player target)
                 {
-                    GlowMessage.sendToTeam(from.getTeam(), target, 100);
+                    GlowMessage.sendToTeam(from.getTeam(), target, Ire.DURATION * 20);
                 }
                 itemStack.setCount(itemStack.getCount() - 1);
             }
@@ -86,7 +88,7 @@ public class HurtHandler
             ItemStack itemStack = player.getOffhandItem();
             if (!player.hasEffect(MobEffects.MOVEMENT_SPEED) && itemStack.getItem() == GunSkillsItems.FAST.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.ATTACK)
             {
-                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 60, 2, false, false, true));
+                player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, Fast.DURATION * 20, 2, false, false, true));
                 itemStack.setCount(itemStack.getCount() - 1);
             }
         }

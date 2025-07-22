@@ -28,11 +28,11 @@ public class ClassCommand
                 if (scoreboard.getOrCreatePlayerScore("game_start", objective).getScore() == 0)
                 {
                     ClassType.setClass(player, type);
-                    player.sendSystemMessage(Component.literal("更换职业成功，当前职业：").append(type.getDisplay()));
+                    player.sendSystemMessage(Component.translatable("command.gunskills.class.success").append(type.getDisplay()));
                 }
                 else
                 {
-                    player.sendSystemMessage(Component.literal("更换职业失败，游戏已开始").withStyle(Style.EMPTY.withColor(0xFF0000)));
+                    player.sendSystemMessage(Component.translatable("command.gunskills.class.fail").withStyle(Style.EMPTY.withColor(0xFF0000)));
                 }
                 return Command.SINGLE_SUCCESS;
             }));

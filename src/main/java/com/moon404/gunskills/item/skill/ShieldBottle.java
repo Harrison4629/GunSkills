@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class ShieldBottle extends SkillItem
 {
+    public static final int AMOUNT = 2;
+    public static final int DURATION = 2;
+
     public ShieldBottle(Properties properties)
     {
-        super(properties, ClassType.SUPPORT);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("在每个队友的脚下生成一个护盾恢复区域"));
-        tooltips.add(Component.literal("其中的玩家每秒恢复 2 点护盾，持续 2 秒"));
+        super(properties, 2, ClassType.SUPPORT);
+        tooltips.add(Component.translatable("item.gunskills.shield_bottle.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.shield_bottle.tooltip.2", AMOUNT, DURATION));
     }
 
     @Override

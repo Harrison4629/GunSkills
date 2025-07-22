@@ -62,7 +62,7 @@ public abstract class RecoverItem extends Item
     {
         NumberFormat formatter = new DecimalFormat("0.0");
         String s = formatter.format((float)getUseDuration(pStack) / 20.0f);
-        pTooltipComponents.add(Component.literal("长按右键使用，时间：" + s + " 秒"));
+        pTooltipComponents.add(Component.translatable("item.gunskills.recover.tooltip", s));
         pTooltipComponents.addAll(tooltips);
     }
 }

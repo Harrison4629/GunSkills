@@ -10,13 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class Totem extends SkillItem
 {
+    public static final int DURATION = 10;
+
     public Totem(Properties properties)
     {
-        super(properties, ClassType.ATTACK);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("记录自己的当前位置"));
-        tooltips.add(Component.literal("10 秒内碎甲则会传送回去"));
-        tooltips.add(Component.literal("没有护盾时不会生效"));
+        super(properties, 2, ClassType.ATTACK);
+        tooltips.add(Component.translatable("item.gunskills.totem.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.totem.tooltip.2", DURATION));
+        tooltips.add(Component.translatable("item.gunskills.totem.tooltip.3"));
     }
 
     @Override

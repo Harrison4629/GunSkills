@@ -27,20 +27,20 @@ public class ChooseCommand
                 PlayerTeam team = TeamArgument.getTeam(command, "choose");
                 if (team.getName().equals("test"))
                 {
-                    player.sendSystemMessage(Component.literal("无法使用此指令进入测试队伍").withStyle(Style.EMPTY.withColor(0xFF0000)));
+                    player.sendSystemMessage(Component.translatable("command.gunskills.choose.fail.1").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
                 }
                 if (team.getPlayers().size() >= Utils.getScore(scoreboard, "game_max_team_player", "global"))
                 {
-                    player.sendSystemMessage(Component.literal("队伍人数已满，无法加入").withStyle(Style.EMPTY.withColor(0xFF0000)));
+                    player.sendSystemMessage(Component.translatable("command.gunskills.choose.fail.2").withStyle(Style.EMPTY.withColor(0xFF0000)));
                     return Command.SINGLE_SUCCESS;
                 }
                 scoreboard.addPlayerToTeam(player.getScoreboardName(), team);
-                player.sendSystemMessage(Component.literal("切换队伍成功，当前队伍：").append(team.getFormattedDisplayName()));
+                player.sendSystemMessage(Component.translatable("command.gunskills.choose.success.1").append(team.getFormattedDisplayName()));
             }
             else
             {
-                player.sendSystemMessage(Component.literal("切换队伍失败，游戏已开始").withStyle(Style.EMPTY.withColor(0xFF0000)));
+                player.sendSystemMessage(Component.translatable("command.gunskills.choose.fail.3").withStyle(Style.EMPTY.withColor(0xFF0000)));
             }
             return Command.SINGLE_SUCCESS;
         }))
@@ -51,11 +51,11 @@ public class ChooseCommand
             if (Utils.getScore(scoreboard, "game_start", "global") == 0)
             {
                 scoreboard.removePlayerFromTeam(player.getScoreboardName());
-                player.sendSystemMessage(Component.literal("您将在下一场游戏中观战"));
+                player.sendSystemMessage(Component.translatable("command.gunskills.choose.success.2"));
             }
             else
             {
-                player.sendSystemMessage(Component.literal("进入观战失败，游戏已开始").withStyle(Style.EMPTY.withColor(0xFF0000)));
+                player.sendSystemMessage(Component.translatable("command.gunskills.choose.fail.4").withStyle(Style.EMPTY.withColor(0xFF0000)));
             }
             return Command.SINGLE_SUCCESS;
         }));

@@ -20,13 +20,14 @@ public abstract class ThrowSkillEntity extends ThrowableItemProjectile
     public Player user;
     protected Vector3f color;
     protected int duration = 200;
-    protected int range = 6;
+    protected int radius;
     protected List<Player> lastTickPlayers = new ArrayList<>();
     private List<Player> targetPlayers = new ArrayList<>();
     
-    public ThrowSkillEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel)
+    public ThrowSkillEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel, int radius)
     {
         super(pEntityType, pLevel);
+        this.radius = radius;
     }
 
     public void tick()
@@ -71,7 +72,7 @@ public abstract class ThrowSkillEntity extends ThrowableItemProjectile
         targetPlayers.clear();
         for (Player player : this.level().players())
         {
-            if (!player.isSpectator() && this.distanceTo(player) <= range && player.getTeam() != this.user.getTeam())
+            if (!player.isSpectator() && this.distanceTo(player) <= radius && player.getTeam() != this.user.getTeam())
             {
                 targetPlayers.add(player);
             }

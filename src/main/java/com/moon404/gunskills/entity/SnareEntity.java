@@ -2,6 +2,7 @@ package com.moon404.gunskills.entity;
 
 import org.joml.Vector3f;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.item.skill.Snare;
 
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +17,7 @@ public class SnareEntity extends ThrowSkillEntity
 {
     public SnareEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel)
     {
-        super(pEntityType, pLevel);
+        super(pEntityType, pLevel, Snare.RADIUS);
         color = new Vector3f(0F, 0, 0.67F);
     }
 
@@ -29,7 +30,7 @@ public class SnareEntity extends ThrowSkillEntity
     @Override
     protected void onPurify()
     {
-        this.user.displayClientMessage(Component.literal("电弧陷阱效果被净化"), true);
+        this.user.displayClientMessage(Component.translatable("skill.gunskills.snare.purify"), true);
     }
 
     @Override
@@ -37,9 +38,9 @@ public class SnareEntity extends ThrowSkillEntity
     {
         for (Player player : lastTickPlayers)
         {
-            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 2, false, false, true));
-            player.hurt(player.damageSources().playerAttack(this.user), 4);
+            player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, Snare.DURATION * 20, 2, false, false, true));
+            player.hurt(player.damageSources().playerAttack(this.user), Snare.DAMAGE);
         }
-        this.user.displayClientMessage(Component.literal("电弧陷阱命中敌人数：" + lastTickPlayers.size()), true);
+        this.user.displayClientMessage(Component.translatable("skill.gunskills.snare.effect", lastTickPlayers.size()), true);
     }
 }

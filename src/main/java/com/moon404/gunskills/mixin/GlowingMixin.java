@@ -41,6 +41,8 @@ public class GlowingMixin
     {
         // 高亮玩家（旁观者）
         if (this.player != null && this.player.isSpectator() && this.options.keySpectatorOutlines.isDown() && p_91315_.getType() == EntityType.PLAYER) return true;
+        // 自己[在战斗中]，显示所有[同队][玩家]
+        if (isAdventure(this.player) && p_91315_.getType() == EntityType.PLAYER && this.player.getTeam() == p_91315_.getTeam()) return true;
         // 有发光效果
         if (p_91315_.isCurrentlyGlowing())
         {
@@ -68,8 +70,6 @@ public class GlowingMixin
                 return true;
             }
         }
-        // 自己[在战斗中]，显示所有[同队][玩家]
-        if (isAdventure(this.player) && p_91315_.getType() == EntityType.PLAYER && this.player.getTeam() == p_91315_.getTeam()) return true;
         // 否则不发光
         return false;
     }

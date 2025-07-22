@@ -10,12 +10,15 @@ import net.minecraft.world.entity.player.Player;
 
 public class Silence extends SkillItem
 {
+    public static final int RADIUS = 8;
+    public static final int DAMAGE = 4;
+    public static final int DURATION = 5;
+
     public Silence(Properties properties)
     {
-        super(properties, ClassType.ATTACK);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("对落地点半径为 6 范围的敌人"));
-        tooltips.add(Component.literal("造成 4 点伤害、5 秒沉默与禁疗"));
+        super(properties, 3, ClassType.ATTACK);
+        tooltips.add(Component.translatable("item.gunskills.silence.tooltip.1", RADIUS));
+        tooltips.add(Component.translatable("item.gunskills.silence.tooltip.2", DAMAGE, DURATION));
     }
 
     @Override

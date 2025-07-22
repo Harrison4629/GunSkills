@@ -11,12 +11,12 @@ import net.minecraft.world.entity.player.Player;
 
 public class Scan extends SkillItem
 {
+    public static final int DURATION = 3;
+
     public Scan(Properties properties)
     {
-        super(properties, ClassType.SCOUT);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("得到距离最近敌人的距离和坐标"));
-        tooltips.add(Component.literal("自己不会被暴露，敌人也不会知道"));
+        super(properties, 2, ClassType.SCOUT);
+        tooltips.add(Component.translatable("item.gunskills.scan.tooltip", DURATION));
     }
 
     @Override
@@ -40,16 +40,15 @@ public class Scan extends SkillItem
         }
         if (nearest == null)
         {
-            Component component = Component.literal("未扫描到任何敌人");
+            Component component = Component.translatable("skill.gunskills.scan.fail");
             player.displayClientMessage(component, true);
         }
         else
         {
-            String message = "最近的敌人在 " + (int)mindis + " 格外";
-            Component component = Component.literal(message);
+            Component component = Component.translatable("skill.gunskills.scan.effect", (int)mindis);
             player.displayClientMessage(component, true);
-            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, 60, 0, false, false, false));
-            GlowMessage.sendToTeam(player.getTeam(), nearest, 60);
+            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, DURATION * 20, 0, false, false, false));
+            GlowMessage.sendToTeam(player.getTeam(), nearest, DURATION * 20);
         }
         return true;
     }

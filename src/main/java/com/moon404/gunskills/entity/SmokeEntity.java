@@ -3,6 +3,7 @@ package com.moon404.gunskills.entity;
 import org.joml.Vector3f;
 import com.moon404.gunskills.init.GunSkillsBlocks;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.item.skill.Smoke;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.DustParticleOptions;
@@ -18,7 +19,7 @@ import net.minecraft.world.phys.HitResult;
 public class SmokeEntity extends ThrowableItemProjectile
 {
     private int activeTickCount;
-    private static final int RADIUS = 4;
+    private static final int RADIUS = Smoke.RADIUS;
 
     public SmokeEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel)
     {
@@ -60,7 +61,7 @@ public class SmokeEntity extends ThrowableItemProjectile
             this.setDeltaMovement(0, 0, 0);
         }
         super.tick();
-        if (this.level() instanceof ServerLevel level && this.tickCount - this.activeTickCount > 200)
+        if (this.level() instanceof ServerLevel level && this.tickCount - this.activeTickCount > Smoke.DURATION * 20)
         {
             Iterable<BlockPos> blockPoses = BlockPos.betweenClosed(this.getBlockX() - RADIUS, this.getBlockY() - RADIUS, this.getBlockZ() - RADIUS,
                 this.getBlockX() + RADIUS, this.getBlockY() + RADIUS, this.getBlockZ() + RADIUS);

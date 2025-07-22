@@ -10,12 +10,15 @@ import net.minecraft.world.entity.player.Player;
 
 public class Snare extends SkillItem
 {
+    public static final int RADIUS = 8;
+    public static final int DAMAGE = 4;
+    public static final int DURATION = 5;
+
     public Snare(Properties properties)
     {
-        super(properties, ClassType.ATTACK);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("对落地点半径为 6 范围的敌人"));
-        tooltips.add(Component.literal("造成 4 点伤害、5 秒缓慢III效果"));
+        super(properties, 3, ClassType.ATTACK);
+        tooltips.add(Component.translatable("item.gunskills.snare.tooltip.1", RADIUS));
+        tooltips.add(Component.translatable("item.gunskills.snare.tooltip.2", DAMAGE, DURATION));
     }
 
     @Override

@@ -2,6 +2,8 @@ package com.moon404.gunskills.entity;
 
 import org.joml.Vector3f;
 
+import com.moon404.gunskills.item.skill.HealthBottle;
+
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.EntityType;
@@ -19,7 +21,7 @@ public class HealthBottleEntity extends Marker
     @Override
     public void tick()
     {
-        if (this.tickCount > 40)
+        if (this.tickCount > HealthBottle.DURATION * 20)
         {
             this.kill();
             return;
@@ -29,7 +31,7 @@ public class HealthBottleEntity extends Marker
             Vector3f color = new Vector3f(1.00F, 0.33F, 0.33F);
             DustParticleOptions options = new DustParticleOptions(color, 2.0F);
             level.sendParticles(options, this.getX(), this.getY() + 0.2, this.getZ(), 1, 1, 0, 1, 0.5);
-            if (this.tickCount % 10 == 0)
+            if (this.tickCount % (20 / HealthBottle.AMOUNT) == 0)
             {
                 for (Player player : level.players())
                 {

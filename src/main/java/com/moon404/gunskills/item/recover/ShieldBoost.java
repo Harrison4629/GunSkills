@@ -12,8 +12,8 @@ public class ShieldBoost extends RecoverItem
     public ShieldBoost(Item.Properties properties)
     {
         super(properties);
-        tooltips.add(Component.literal("提供 25 护盾进化经验"));
-        tooltips.add(Component.literal("使用此物品造成的护盾进化会恢复等量护盾值"));
+        tooltips.add(Component.translatable("item.gunskills.shield_boost.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.shield_boost.tooltip.2"));
     }
 
     @Override

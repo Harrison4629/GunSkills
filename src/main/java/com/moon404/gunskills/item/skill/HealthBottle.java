@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class HealthBottle extends SkillItem
 {
+    public static final int AMOUNT = 2;
+    public static final int DURATION = 2;
+
     public HealthBottle(Properties properties)
     {
-        super(properties, ClassType.SUPPORT);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("在每个队友的脚下生成一个生命恢复区域"));
-        tooltips.add(Component.literal("其中的玩家每秒恢复 2 点生命，持续 2 秒"));
+        super(properties, 2, ClassType.SUPPORT);
+        tooltips.add(Component.translatable("item.gunskills.health_bottle.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.health_bottle.tooltip.2", AMOUNT, DURATION));
     }
 
     @Override

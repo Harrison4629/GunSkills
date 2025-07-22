@@ -10,12 +10,14 @@ import net.minecraft.world.entity.player.Player;
 
 public class Stim extends SkillItem
 {
+    public static final int AMOUNT = 4;
+    public static final int DURATION = 5;
+
     public Stim(Properties properties)
     {
-        super(properties, ClassType.ROGUE);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("失去 4 点生命值（不会致死）"));
-        tooltips.add(Component.literal("获得 5 秒速度III与跳跃II"));
+        super(properties, 2, ClassType.ROGUE);
+        tooltips.add(Component.translatable("item.gunskills.stim.tooltip.1", AMOUNT));
+        tooltips.add(Component.translatable("item.gunskills.stim.tooltip.2", DURATION));
     }
 
     @Override
@@ -24,11 +26,11 @@ public class Stim extends SkillItem
         if (ClassType.getClass(player) != this.classType) return false;
         if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
         float hp = player.getHealth();
-        hp -= 4;
+        hp -= AMOUNT;
         if (hp < 1) hp = 1;
         player.setHealth(hp);
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 100, 2, false, false, true));
-        player.addEffect(new MobEffectInstance(MobEffects.JUMP, 100, 1, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, DURATION * 20, 2, false, false, true));
+        player.addEffect(new MobEffectInstance(MobEffects.JUMP, DURATION * 20, 1, false, false, true));
         return true;
     }
 }

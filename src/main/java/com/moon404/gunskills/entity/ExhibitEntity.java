@@ -2,6 +2,7 @@ package com.moon404.gunskills.entity;
 
 import org.joml.Vector3f;
 import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.item.skill.Exhibit;
 import com.moon404.gunskills.message.GlowMessage;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -16,7 +17,7 @@ public class ExhibitEntity extends ThrowSkillEntity
 {
     public ExhibitEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel)
     {
-        super(pEntityType, pLevel);
+        super(pEntityType, pLevel, Exhibit.RADIUS);
         color = new Vector3f(0F, 0.67F, 0F);
     }
 
@@ -29,7 +30,7 @@ public class ExhibitEntity extends ThrowSkillEntity
     @Override
     protected void onPurify()
     {
-        this.user.displayClientMessage(Component.literal("一览无余效果被净化"), true);
+        this.user.displayClientMessage(Component.translatable("skill.gunskills.exhibit.purify"), true);
     }
 
     @Override
@@ -37,9 +38,10 @@ public class ExhibitEntity extends ThrowSkillEntity
     {
         for (Player player : lastTickPlayers)
         {
-            player.addEffect(new MobEffectInstance(MobEffects.GLOWING, 100, 0, false, false, true));
-            GlowMessage.sendToTeam(this.user.getTeam(), player, 100);
+            int duration = Exhibit.DURATION * 20;
+            player.addEffect(new MobEffectInstance(MobEffects.GLOWING, duration, 0, false, false, true));
+            GlowMessage.sendToTeam(this.user.getTeam(), player, duration);
         }
-        this.user.displayClientMessage(Component.literal("一览无余命中敌人数：" + lastTickPlayers.size()), true);
+        this.user.displayClientMessage(Component.translatable("skill.gunskills.exhibit.effect", lastTickPlayers.size()), true);
     }
 }

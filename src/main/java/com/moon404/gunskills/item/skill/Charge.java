@@ -8,11 +8,12 @@ import net.minecraft.world.entity.player.Player;
 
 public class Charge extends SkillItem
 {
+    public static final int AMOUNT = 25;
+
     public Charge(Properties properties)
     {
-        super(properties, ClassType.SUPPORT);
-        tooltips.add(Component.literal("按 Q 扔出，立即生效"));
-        tooltips.add(Component.literal("所有友方玩家获得25进化点数"));
+        super(properties, 2, ClassType.SUPPORT);
+        tooltips.add(Component.translatable("item.gunskills.charge.tooltip", AMOUNT));
     }
 
     @Override
@@ -25,7 +26,7 @@ public class Charge extends SkillItem
             if (target.getTeam() == player.getTeam())
             {
                 int oldlevel = target.experienceLevel;
-                target.giveExperiencePoints(2500);
+                target.giveExperiencePoints(AMOUNT * 100);
                 int newlevel = target.experienceLevel;
                 if (newlevel > oldlevel)
                 {

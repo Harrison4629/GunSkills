@@ -14,6 +14,7 @@ import com.moon404.gunskills.struct.PingInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec2;
 import net.minecraft.world.phys.Vec3;
@@ -122,7 +123,7 @@ public class RenderGuiHandler
             width = mc.font.width(info.sender);
             height = mc.font.wordWrapHeight(info.sender, width);
             guiGraphics.drawString(mc.font, info.sender, -width / 2, -height / 2 - 12, 0xFFFF00);
-            String s = (int)info.distance + "格";
+            String s = (int)info.distance + Component.translatable("message.gunskills.ping.unit").getString();
             width = mc.font.width(s);
             height = mc.font.wordWrapHeight(s, width);
             guiGraphics.drawString(mc.font, s, -width / 2, -height / 2 + 12, 0xFFFF00);

@@ -2,6 +2,8 @@ package com.moon404.gunskills.entity;
 
 import org.joml.Vector3f;
 
+import com.moon404.gunskills.item.skill.Totem;
+
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -22,14 +24,14 @@ public class TotemEntity extends Marker
     @Override
     public void tick()
     {
-        if (this.tickCount >= 200)
+        if (this.tickCount >= Totem.DURATION * 20)
         {
             this.kill();
             return;
         }
         if (this.tickCount % 10 == 0 && this.level() instanceof ServerLevel level)
         {
-            player.displayClientMessage(Component.literal("回溯剩余时间：" + (200 - this.tickCount) / 20), true);
+            player.displayClientMessage(Component.translatable("skill.gunskills.totem.time", (200 - this.tickCount) / 20), true);
             Vector3f color = new Vector3f(0.33F, 0.33F, 0.33F);
             DustParticleOptions options = new DustParticleOptions(color, 1.5F);
             level.sendParticles(options, this.getX(), this.getY() + 0.2, this.getZ(), 0, 0, 0, 0, 0);

@@ -15,7 +15,7 @@ public class Reviver extends RecoverItem
     public Reviver(Item.Properties properties)
     {
         super(properties);
-        tooltips.add(Component.literal("复活所有阵亡队友"));
+        tooltips.add(Component.translatable("item.gunskills.reviver.tooltip"));
     }
 
     public int getUseDuration(ItemStack stack)
@@ -45,7 +45,7 @@ public class Reviver extends RecoverItem
             }
             else
             {
-                player.displayClientMessage(Component.literal("没有可以复活的队友"), true);
+                player.displayClientMessage(Component.translatable("item.gunskills.reviver.fail"), true);
                 return stack;
             }
         }

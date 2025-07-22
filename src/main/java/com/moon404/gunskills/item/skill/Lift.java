@@ -9,12 +9,13 @@ import net.minecraft.world.entity.item.ItemEntity;
 
 public class Lift extends SkillItem
 {
+    public static final int DURATION = 5;
+
     public Lift(Properties properties)
     {
-        super(properties, ClassType.ROGUE);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("生成一个持续 5 秒的重力电梯"));
-        tooltips.add(Component.literal("可抬升最高 10 格"));
+        super(properties, 3, ClassType.ROGUE);
+        tooltips.add(Component.translatable("item.gunskills.lift.tooltip.1", DURATION));
+        tooltips.add(Component.translatable("item.gunskills.lift.tooltip.2"));
     }
 
     @Override

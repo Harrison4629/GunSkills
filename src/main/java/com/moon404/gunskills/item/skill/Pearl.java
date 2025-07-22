@@ -13,10 +13,9 @@ public class Pearl extends SkillItem
 {
     public Pearl(Properties properties)
     {
-        super(properties, ClassType.ROGUE);
-        tooltips.add(Component.literal("按 Q 扔出，落地生效"));
-        tooltips.add(Component.literal("瞬移到目的地点，有明显的粒子效果"));
-        tooltips.add(Component.literal("落地前玩家只能够缓慢移动"));
+        super(properties, 3, ClassType.ROGUE);
+        tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.1"));
+        tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.2"));
     }
 
     @Override
