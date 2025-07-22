@@ -3,7 +3,6 @@ package com.moon404.gunskills.item.skill;
 import java.util.List;
 import java.util.ArrayList;
 
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -20,15 +19,14 @@ public class Glow extends SkillItem
 
     public Glow(Properties properties)
     {
-        super(properties, 2, ClassType.SCOUT);
+        super(properties, 480, 2, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.glow.tooltip", RADIUS, DURATION));
     }
 
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         Level level = player.level();
         List<Player> players = new ArrayList<>();
         for (Player target : level.players())

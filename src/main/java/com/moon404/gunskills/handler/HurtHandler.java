@@ -1,14 +1,12 @@
 package com.moon404.gunskills.handler;
 
-import com.moon404.gunskills.init.GunSkillsEffects;
-import com.moon404.gunskills.init.GunSkillsItems;
+import com.moon404.gunskills.item.skill.Boot;
 import com.moon404.gunskills.item.skill.Fast;
 import com.moon404.gunskills.item.skill.Ire;
 import com.moon404.gunskills.message.DamageIndicatorMessage;
 import com.moon404.gunskills.message.GlowMessage;
 import com.moon404.gunskills.message.ShowDamageMessage;
 import com.moon404.gunskills.message.DamageIndicatorMessage.DamageIndicator;
-import com.moon404.gunskills.struct.ClassType;
 import com.moon404.gunskills.struct.DamageInfo;
 
 import net.minecraft.server.level.ServerPlayer;
@@ -30,9 +28,9 @@ public class HurtHandler
         if (event.getEntity() instanceof Player player && player.damageSources().fall() == event.getSource())
         {
             ItemStack itemStack = player.getOffhandItem();
-            if (itemStack.getItem() == GunSkillsItems.BOOT.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.ROGUE)
+            if (itemStack.getItem() instanceof Boot item && item.canUse(player))
             {
-                itemStack.setCount(itemStack.getCount() - 1);
+                item.enterCooldown(player);
             }
             else
             {
@@ -72,24 +70,22 @@ public class HurtHandler
             }
 
             ItemStack itemStack = from.getOffhandItem();
-            if (itemStack.getItem() == GunSkillsItems.IRE.get() && !event.getEntity().hasEffect(MobEffects.GLOWING) && !from.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(from) == ClassType.SCOUT)
+            if (itemStack.getItem() instanceof Ire item && !event.getEntity().hasEffect(MobEffects.GLOWING) && item.canUse(from))
             {
                 event.getEntity().addEffect(new MobEffectInstance(MobEffects.GLOWING, Ire.DURATION * 20, 0, false, false, true));
                 if (event.getEntity() instanceof Player target)
-                {
                     GlowMessage.sendToTeam(from.getTeam(), target, Ire.DURATION * 20);
-                }
-                itemStack.setCount(itemStack.getCount() - 1);
+                item.enterCooldown(from);
             }
         }
 
         if (event.getEntity() instanceof Player player)
         {
             ItemStack itemStack = player.getOffhandItem();
-            if (!player.hasEffect(MobEffects.MOVEMENT_SPEED) && itemStack.getItem() == GunSkillsItems.FAST.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.ATTACK)
+            if (itemStack.getItem() instanceof Fast item && !player.hasEffect(MobEffects.MOVEMENT_SPEED) && item.canUse(player))
             {
                 player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, Fast.DURATION * 20, 2, false, false, true));
-                itemStack.setCount(itemStack.getCount() - 1);
+                item.enterCooldown(player);
             }
         }
     }

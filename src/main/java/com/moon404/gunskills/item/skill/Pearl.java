@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.PearlEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -13,7 +12,7 @@ public class Pearl extends SkillItem
 {
     public Pearl(Properties properties)
     {
-        super(properties, 3, ClassType.ROGUE);
+        super(properties, 480, 3, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.2"));
     }
@@ -21,8 +20,7 @@ public class Pearl extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4, false, false, true));
         PearlEntity pearl = new PearlEntity(player.level(), player);
         pearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1, 0);

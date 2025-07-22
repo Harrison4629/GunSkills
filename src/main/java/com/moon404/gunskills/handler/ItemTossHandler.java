@@ -1,5 +1,6 @@
 package com.moon404.gunskills.handler;
 
+import com.moon404.gunskills.item.skill.SkillBag;
 import com.moon404.gunskills.item.skill.SkillItem;
 
 import net.minecraft.world.entity.player.Player;
@@ -21,14 +22,11 @@ public class ItemTossHandler
         {
             if (item.onToss(player))
             {
-                int count = itemStack.getCount();
-                if (count == 1)
+                event.setCanceled(true);
+                if (!(item instanceof SkillBag))
                 {
-                    event.setCanceled(true);
-                }
-                else
-                {
-                    itemStack.setCount(count - 1);
+                    player.addItem(itemStack);
+                    item.enterCooldown(player);
                 }
             }
         }

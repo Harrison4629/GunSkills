@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.SmokeEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -15,7 +14,7 @@ public class Smoke extends SkillItem
 
     public Smoke(Properties properties)
     {
-        super(properties, 3, ClassType.ATTACK);
+        super(properties, 480, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.2", RADIUS, DURATION));
     }
@@ -23,8 +22,7 @@ public class Smoke extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         SmokeEntity smoke = new SmokeEntity(GunSkillsEntities.SMOKE.get(), player.level());
         smoke.setPos(player.getEyePosition());
         smoke.setNoGravity(true);

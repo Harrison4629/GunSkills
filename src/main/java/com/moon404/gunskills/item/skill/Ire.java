@@ -10,7 +10,7 @@ public class Ire extends SkillItem
 
     public Ire(Properties properties)
     {
-        super(properties, 1, ClassType.SCOUT);
+        super(properties, 480, 1, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.ire.tooltip", DURATION));
     }
 }

@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.TotemEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -14,7 +13,7 @@ public class Totem extends SkillItem
 
     public Totem(Properties properties)
     {
-        super(properties, 2, ClassType.ATTACK);
+        super(properties, 480, 2, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.2", DURATION));
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.3"));
@@ -23,8 +22,7 @@ public class Totem extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         if (player.getAbsorptionAmount() == 0) return false;
         TotemEntity totem = new TotemEntity(GunSkillsEntities.TOTEM.get(), player.level());
         totem.setPos(player.position());

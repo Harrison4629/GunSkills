@@ -2,8 +2,6 @@ package com.moon404.gunskills.item.skill;
 
 import java.util.List;
 
-import com.moon404.gunskills.init.GunSkillsEffects;
-import com.moon404.gunskills.init.GunSkillsItems;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -14,7 +12,7 @@ public class Purify extends SkillItem
 {
     public Purify(Properties properties)
     {
-        super(properties, 1, ClassType.SUPPORT);
+        super(properties, 480, 1, ClassType.SUPPORT);
         tooltips.add(Component.translatable("item.gunskills.purify.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.purify.tooltip.2"));
     }
@@ -24,9 +22,9 @@ public class Purify extends SkillItem
         for (Player player : players)
         {
             ItemStack offhandStack = player.getOffhandItem();
-            if (offhandStack.getItem() == GunSkillsItems.PURIFY.get() && !player.hasEffect(GunSkillsEffects.SILENCE.get()) && ClassType.getClass(player) == ClassType.SUPPORT)
+            if (offhandStack.getItem() instanceof Purify item && item.canUse(player))
             {
-                offhandStack.setCount(offhandStack.getCount() - 1);
+                item.enterCooldown(player);
                 player.displayClientMessage(Component.translatable("skill.gunskills.purify.effect"), true);
                 return true;
             }

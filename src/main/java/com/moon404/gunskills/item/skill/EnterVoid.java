@@ -1,6 +1,5 @@
 package com.moon404.gunskills.item.skill;
 
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -16,7 +15,7 @@ public class EnterVoid extends SkillItem
 
     public EnterVoid(Properties properties)
     {
-        super(properties, 2, ClassType.ROGUE);
+        super(properties, 480, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.1", DURATION));
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.2"));
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.3"));
@@ -39,8 +38,7 @@ public class EnterVoid extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         Inventory inventory = player.getInventory();
         int freeBagSlot = getFreeSlot(inventory);
         if (freeBagSlot >= 0)

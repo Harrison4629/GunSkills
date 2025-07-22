@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.SilenceEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -16,7 +15,7 @@ public class Silence extends SkillItem
 
     public Silence(Properties properties)
     {
-        super(properties, 3, ClassType.ATTACK);
+        super(properties, 480, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.silence.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.silence.tooltip.2", DAMAGE, DURATION));
     }
@@ -24,8 +23,7 @@ public class Silence extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         SilenceEntity silence = new SilenceEntity(GunSkillsEntities.SILENCE.get(), player.level());
         silence.user = player;
         silence.setPos(player.getEyePosition());

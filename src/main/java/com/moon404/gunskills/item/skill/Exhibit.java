@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.ExhibitEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -15,7 +14,7 @@ public class Exhibit extends SkillItem
 
     public Exhibit(Properties properties)
     {
-        super(properties, 3, ClassType.SCOUT);
+        super(properties, 480, 3, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.2", DURATION));
     }
@@ -23,8 +22,7 @@ public class Exhibit extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         ExhibitEntity exhibit = new ExhibitEntity(GunSkillsEntities.EXHHIBIT.get(), player.level());
         exhibit.user = player;
         exhibit.setPos(player.getEyePosition());

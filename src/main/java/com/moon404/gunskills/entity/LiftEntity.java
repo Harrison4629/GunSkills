@@ -22,7 +22,7 @@ public class LiftEntity extends Marker
     @Override
     public void tick()
     {
-        if (this.tickCount >= Lift.DURATION)
+        if (this.tickCount >= Lift.DURATION * 20)
         {
             this.kill();
             return;

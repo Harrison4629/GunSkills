@@ -10,7 +10,7 @@ public class Fast extends SkillItem
 
     public Fast(Properties properties)
     {
-        super(properties, 1, ClassType.ATTACK);
+        super(properties, 480, 1, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.fast.tooltip", DURATION));
     }
 }

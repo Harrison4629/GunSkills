@@ -1,7 +1,6 @@
 package com.moon404.gunskills.item.skill;
 
 import com.moon404.gunskills.entity.SnareEntity;
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
@@ -16,7 +15,7 @@ public class Snare extends SkillItem
 
     public Snare(Properties properties)
     {
-        super(properties, 3, ClassType.ATTACK);
+        super(properties, 480, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.snare.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.snare.tooltip.2", DAMAGE, DURATION));
     }
@@ -24,8 +23,7 @@ public class Snare extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         SnareEntity snare = new SnareEntity(GunSkillsEntities.SNARE.get(), player.level());
         snare.user = player;
         snare.setPos(player.getEyePosition());

@@ -1,6 +1,5 @@
 package com.moon404.gunskills.item.skill;
 
-import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
@@ -15,7 +14,7 @@ public class Stim extends SkillItem
 
     public Stim(Properties properties)
     {
-        super(properties, 2, ClassType.ROGUE);
+        super(properties, 480, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.stim.tooltip.1", AMOUNT));
         tooltips.add(Component.translatable("item.gunskills.stim.tooltip.2", DURATION));
     }
@@ -23,8 +22,7 @@ public class Stim extends SkillItem
     @Override
     public boolean onToss(Player player)
     {
-        if (ClassType.getClass(player) != this.classType) return false;
-        if (player.hasEffect(GunSkillsEffects.SILENCE.get())) return false;
+        if (!canUse(player)) return false;
         float hp = player.getHealth();
         hp -= AMOUNT;
         if (hp < 1) hp = 1;

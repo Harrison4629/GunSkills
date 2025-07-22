@@ -5,7 +5,7 @@ import com.moon404.gunskills.init.GunSkillsEntities;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
 
 public class Lift extends SkillItem
 {
@@ -13,17 +13,18 @@ public class Lift extends SkillItem
 
     public Lift(Properties properties)
     {
-        super(properties, 3, ClassType.ROGUE);
+        super(properties, 480, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.lift.tooltip.1", DURATION));
         tooltips.add(Component.translatable("item.gunskills.lift.tooltip.2"));
     }
 
     @Override
-    public boolean onLand(ItemEntity entity)
+    public boolean onToss(Player player)
     {
-        LiftEntity lift = new LiftEntity(GunSkillsEntities.LIFT.get(), entity.level());
-        lift.setPos(entity.position());
-        entity.level().addFreshEntity(lift);
+        if (!canUse(player)) return false;
+        LiftEntity lift = new LiftEntity(GunSkillsEntities.LIFT.get(), player.level());
+        lift.setPos(player.position());
+        player.level().addFreshEntity(lift);
         return true;
     }
 }

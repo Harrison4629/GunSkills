@@ -41,7 +41,7 @@ public class SkillBag extends SkillItem
 
     public SkillBag(Properties properties)
     {
-        super(properties, 2, null);
+        super(properties, 480, 2, null);
         tooltips.add(Component.translatable("item.gunskills.skill_bag.tooltip"));
     }
 
