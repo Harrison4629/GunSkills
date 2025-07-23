@@ -14,7 +14,7 @@ public class Scan extends SkillItem
 
     public Scan(Properties properties)
     {
-        super(properties, 480, 2, ClassType.SCOUT);
+        super(properties, 40, 2, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.scan.tooltip", DURATION));
     }
 

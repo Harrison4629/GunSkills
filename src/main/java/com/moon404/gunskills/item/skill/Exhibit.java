@@ -14,7 +14,7 @@ public class Exhibit extends SkillItem
 
     public Exhibit(Properties properties)
     {
-        super(properties, 480, 3, ClassType.SCOUT);
+        super(properties, 40, 3, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.exhibit.tooltip.2", DURATION));
     }

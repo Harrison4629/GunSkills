@@ -14,7 +14,7 @@ public class Stim extends SkillItem
 
     public Stim(Properties properties)
     {
-        super(properties, 480, 2, ClassType.ROGUE);
+        super(properties, 40, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.stim.tooltip.1", AMOUNT));
         tooltips.add(Component.translatable("item.gunskills.stim.tooltip.2", DURATION));
     }

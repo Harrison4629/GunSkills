@@ -12,7 +12,7 @@ public class Pearl extends SkillItem
 {
     public Pearl(Properties properties)
     {
-        super(properties, 480, 3, ClassType.ROGUE);
+        super(properties, 40, 3, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.pearl.tooltip.2"));
     }

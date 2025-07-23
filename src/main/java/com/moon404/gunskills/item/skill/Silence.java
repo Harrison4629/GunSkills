@@ -15,7 +15,7 @@ public class Silence extends SkillItem
 
     public Silence(Properties properties)
     {
-        super(properties, 480, 3, ClassType.ATTACK);
+        super(properties, 40, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.silence.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.silence.tooltip.2", DAMAGE, DURATION));
     }

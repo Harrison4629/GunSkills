@@ -15,7 +15,7 @@ public class Snare extends SkillItem
 
     public Snare(Properties properties)
     {
-        super(properties, 480, 3, ClassType.ATTACK);
+        super(properties, 40, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.snare.tooltip.1", RADIUS));
         tooltips.add(Component.translatable("item.gunskills.snare.tooltip.2", DAMAGE, DURATION));
     }

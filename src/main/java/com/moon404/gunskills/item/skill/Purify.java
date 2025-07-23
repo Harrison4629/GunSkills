@@ -12,7 +12,7 @@ public class Purify extends SkillItem
 {
     public Purify(Properties properties)
     {
-        super(properties, 480, 1, ClassType.SUPPORT);
+        super(properties, 20, 1, ClassType.SUPPORT);
         tooltips.add(Component.translatable("item.gunskills.purify.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.purify.tooltip.2"));
     }

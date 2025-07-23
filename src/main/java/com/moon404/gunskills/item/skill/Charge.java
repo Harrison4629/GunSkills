@@ -11,7 +11,7 @@ public class Charge extends SkillItem
 
     public Charge(Properties properties)
     {
-        super(properties, 480, 2, ClassType.SUPPORT);
+        super(properties, 60, 2, ClassType.SUPPORT);
         tooltips.add(Component.translatable("item.gunskills.charge.tooltip", AMOUNT));
     }
 

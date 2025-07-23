@@ -15,7 +15,7 @@ public class EnterVoid extends SkillItem
 
     public EnterVoid(Properties properties)
     {
-        super(properties, 480, 2, ClassType.ROGUE);
+        super(properties, 40, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.1", DURATION));
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.2"));
         tooltips.add(Component.translatable("item.gunskills.void.tooltip.3"));

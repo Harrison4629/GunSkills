@@ -14,7 +14,7 @@ public class Smoke extends SkillItem
 
     public Smoke(Properties properties)
     {
-        super(properties, 480, 3, ClassType.ATTACK);
+        super(properties, 40, 3, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.smoke.tooltip.2", RADIUS, DURATION));
     }

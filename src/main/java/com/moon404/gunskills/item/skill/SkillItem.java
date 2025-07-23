@@ -47,8 +47,14 @@ public class SkillItem extends Item
     public int getCooldown(Player player)
     {
         Inventory inventory = player.getInventory();
-        int count = Math.max(1, inventory.countItem(this));
-        return this.cooldown / count;
+        int count = inventory.countItem(this);
+        int unit;
+        if (count <= 1) unit = 20;
+        else if (count == 2) unit = 16;
+        else if (count == 3) unit = 13;
+        else if (count == 4) unit = 11;
+        else unit = 10;
+        return this.cooldown * unit;
     }
 
     public void enterCooldown(Player player)

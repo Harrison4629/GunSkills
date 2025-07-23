@@ -19,7 +19,7 @@ public class Glow extends SkillItem
 
     public Glow(Properties properties)
     {
-        super(properties, 480, 2, ClassType.SCOUT);
+        super(properties, 40, 2, ClassType.SCOUT);
         tooltips.add(Component.translatable("item.gunskills.glow.tooltip", RADIUS, DURATION));
     }
 

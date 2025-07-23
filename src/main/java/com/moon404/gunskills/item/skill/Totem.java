@@ -13,7 +13,7 @@ public class Totem extends SkillItem
 
     public Totem(Properties properties)
     {
-        super(properties, 480, 2, ClassType.ATTACK);
+        super(properties, 40, 2, ClassType.ATTACK);
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.2", DURATION));
         tooltips.add(Component.translatable("item.gunskills.totem.tooltip.3"));

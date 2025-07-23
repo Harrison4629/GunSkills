@@ -13,7 +13,7 @@ public class Lift extends SkillItem
 
     public Lift(Properties properties)
     {
-        super(properties, 480, 2, ClassType.ROGUE);
+        super(properties, 40, 2, ClassType.ROGUE);
         tooltips.add(Component.translatable("item.gunskills.lift.tooltip.1", DURATION));
         tooltips.add(Component.translatable("item.gunskills.lift.tooltip.2"));
     }

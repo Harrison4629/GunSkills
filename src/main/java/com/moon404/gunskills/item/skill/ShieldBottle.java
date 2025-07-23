@@ -14,7 +14,7 @@ public class ShieldBottle extends SkillItem
 
     public ShieldBottle(Properties properties)
     {
-        super(properties, 480, 2, ClassType.SUPPORT);
+        super(properties, 20, 2, ClassType.SUPPORT);
         tooltips.add(Component.translatable("item.gunskills.shield_bottle.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.shield_bottle.tooltip.2", AMOUNT, DURATION));
     }
