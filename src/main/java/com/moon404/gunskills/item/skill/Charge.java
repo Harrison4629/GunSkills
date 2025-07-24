@@ -16,9 +16,8 @@ public class Charge extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         for (Player target : player.level().players())
         {
             if (target.getTeam() == player.getTeam())
@@ -32,6 +31,5 @@ public class Charge extends SkillItem
                 }
             }
         }
-        return true;
     }
 }

@@ -20,15 +20,13 @@ public class Exhibit extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         ExhibitEntity exhibit = new ExhibitEntity(GunSkillsEntities.EXHHIBIT.get(), player.level());
         exhibit.user = player;
         exhibit.setPos(player.getEyePosition());
         exhibit.setNoGravity(true);
         exhibit.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(exhibit);
-        return true;
     }
 }

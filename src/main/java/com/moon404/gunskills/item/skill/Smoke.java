@@ -20,14 +20,12 @@ public class Smoke extends SkillItem
     }
     
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         SmokeEntity smoke = new SmokeEntity(GunSkillsEntities.SMOKE.get(), player.level());
         smoke.setPos(player.getEyePosition());
         smoke.setNoGravity(true);
         smoke.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(smoke);
-        return true;
     }
 }

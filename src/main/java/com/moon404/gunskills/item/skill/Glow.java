@@ -24,9 +24,8 @@ public class Glow extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         Level level = player.level();
         List<Player> players = new ArrayList<>();
         for (Player target : level.players())
@@ -49,6 +48,5 @@ public class Glow extends SkillItem
             }
             player.displayClientMessage(Component.translatable("skill.gunskills.glow.effect", players.size()), true);
         }
-        return true;
     }
 }

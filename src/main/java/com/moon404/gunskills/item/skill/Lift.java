@@ -19,12 +19,10 @@ public class Lift extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         LiftEntity lift = new LiftEntity(GunSkillsEntities.LIFT.get(), player.level());
         lift.setPos(player.position());
         player.level().addFreshEntity(lift);
-        return true;
     }
 }

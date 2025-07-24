@@ -19,9 +19,8 @@ public class Scan extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         double mindis = Float.MAX_VALUE;
         Player nearest = null;
         for (Player target : player.level().players())
@@ -48,6 +47,5 @@ public class Scan extends SkillItem
             nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, DURATION * 20, 0, false, false, false));
             GlowMessage.sendToTeam(player.getTeam(), nearest, DURATION * 20);
         }
-        return true;
     }
 }

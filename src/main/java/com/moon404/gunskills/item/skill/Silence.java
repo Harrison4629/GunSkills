@@ -21,15 +21,13 @@ public class Silence extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         SilenceEntity silence = new SilenceEntity(GunSkillsEntities.SILENCE.get(), player.level());
         silence.user = player;
         silence.setPos(player.getEyePosition());
         silence.setNoGravity(true);
         silence.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(silence);
-        return true;
     }
 }

@@ -5,10 +5,13 @@ import java.util.List;
 
 import javax.annotation.Nullable;
 
+import com.moon404.gunskills.init.GunSkillsConfigs;
 import com.moon404.gunskills.init.GunSkillsEffects;
+import com.moon404.gunskills.init.GunSkillsKeyMappings;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -62,21 +65,35 @@ public class SkillItem extends Item
         player.getCooldowns().addCooldown(this, this.getCooldown(player));
     }
     
-    // 技能物品被扔下时触发
-    // player 扔物品的玩家
-    // return 是否消耗
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        return false;
+
     }
 
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
     {
+        LocalPlayer player = Minecraft.getInstance().player;
+        Inventory inventory = player.getInventory();
+        int slot = inventory.findSlotMatchingItem(pStack);
+        int slota = GunSkillsConfigs.DROPA_INDEX.get().intValue();
+        int slotb = GunSkillsConfigs.DROPB_INDEX.get().intValue();
+        int slotc = GunSkillsConfigs.DROPC_INDEX.get().intValue();
         if (this.classType != null)
             pTooltipComponents.add(Component.translatable("skill.gunskills.class.limit").append(this.classType.getDisplay()));
-        pTooltipComponents.add(Component.translatable("skill.gunskills.use." + this.useType));
-        pTooltipComponents.add(Component.translatable("skill.gunskills.cooldown", this.getCooldown(Minecraft.getInstance().player) / 20));
+        if (this.useType == 1 || this.useType == 4)
+            pTooltipComponents.add(Component.translatable("skill.gunskills.use." + this.useType));
+        else if (this.useType == 2 || this.useType == 3)
+            if (slot == slota - 1)
+                pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.2", GunSkillsKeyMappings.DROPA_KEY.getKey().getDisplayName(), Component.translatable("skill.gunskills.use." + this.useType)));
+            else if (slot == slotb - 1)
+                pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.2", GunSkillsKeyMappings.DROPB_KEY.getKey().getDisplayName(), Component.translatable("skill.gunskills.use." + this.useType)));
+            else if (slot == slotc - 1)
+                pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.2", GunSkillsKeyMappings.DROPC_KEY.getKey().getDisplayName(), Component.translatable("skill.gunskills.use." + this.useType)));
+            else
+                pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.1", slota, slotb, slotc));
+        if (this.cooldown > 0)
+            pTooltipComponents.add(Component.translatable("skill.gunskills.cooldown", this.getCooldown(player) / 20));
         pTooltipComponents.addAll(this.tooltips);
     }
 }

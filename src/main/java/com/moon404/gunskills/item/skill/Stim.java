@@ -20,15 +20,13 @@ public class Stim extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         float hp = player.getHealth();
         hp -= AMOUNT;
         if (hp < 1) hp = 1;
         player.setHealth(hp);
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, DURATION * 20, 2, false, false, true));
         player.addEffect(new MobEffectInstance(MobEffects.JUMP, DURATION * 20, 1, false, false, true));
-        return true;
     }
 }

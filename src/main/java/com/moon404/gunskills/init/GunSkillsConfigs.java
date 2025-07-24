@@ -18,14 +18,14 @@ public class GunSkillsConfigs
 
     static
     {
-        RECOVER_INDEX = CLIENT_BUILDER.comment(" 回复品轮盘的快捷栏位（取值：0-9，0代表不启用此功能）").defineInRange("Recover hotbar", 4, 0, 9);
-        DROPA_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位A（取值：1-9）").defineInRange("dropa hotbar", 5, 1, 9);
-        DROPB_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位B（取值：1-9）").defineInRange("dropb hotbar", 6, 1, 9);
-        DROPC_INDEX = CLIENT_BUILDER.comment(" 快捷丢弃栏位C（取值：1-9）").defineInRange("dropc hotbar", 7, 1, 9);
-        STEP_SOUND_MUL = CLIENT_BUILDER.comment(" 脚步声放大倍率（默认：6.0）").define("step sound multipier", 6.0f);
+        RECOVER_INDEX = CLIENT_BUILDER.comment(" 回复品轮盘对应的快捷栏位（取值0-9，默认4，0代表不启用此功能）").defineInRange("recover item hotbar slot", 4, 0, 9);
+        DROPA_INDEX = CLIENT_BUILDER.comment(" 技能A对应的快捷栏位（取值1-9，默认5）").defineInRange("skill A hotbar slot", 5, 1, 9);
+        DROPB_INDEX = CLIENT_BUILDER.comment(" 技能B对应的快捷栏位（取值1-9，默认6）").defineInRange("skill B hotbar slot", 6, 1, 9);
+        DROPC_INDEX = CLIENT_BUILDER.comment(" 技能C对应的快捷栏位（取值1-9，默认7）").defineInRange("skill C hotbar slot", 7, 1, 9);
+        STEP_SOUND_MUL = CLIENT_BUILDER.comment(" 脚步声放大倍率（默认6.0）").define("step sound multipier", 6.0f);
         CLIENT_CONFIG = CLIENT_BUILDER.build();
 
-        STEP_RANGE = SERVER_BUILDER.comment(" 脚步声传播距离（默认：32.0）").define("step sound multipier", 32.0f);
+        STEP_RANGE = SERVER_BUILDER.comment(" 脚步声传播距离（默认32.0）").define("step range multipier", 32.0f);
         SERVER_CONFIG = SERVER_BUILDER.build();
     }
 }

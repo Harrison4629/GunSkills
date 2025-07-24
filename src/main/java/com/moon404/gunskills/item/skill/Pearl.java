@@ -18,13 +18,11 @@ public class Pearl extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 100, 4, false, false, true));
         PearlEntity pearl = new PearlEntity(player.level(), player);
         pearl.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 1, 0);
         player.level().addFreshEntity(pearl);
-        return true;
     }
 }

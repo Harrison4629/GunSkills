@@ -20,9 +20,8 @@ public class HealthBottle extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         for (Player target : player.level().players())
         {
             if (!target.isSpectator() && target.getTeam() == player.getTeam())
@@ -32,6 +31,5 @@ public class HealthBottle extends SkillItem
                 target.level().addFreshEntity(bottle);
             }
         }
-        return true;
     }
 }

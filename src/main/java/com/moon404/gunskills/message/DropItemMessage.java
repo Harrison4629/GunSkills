@@ -1,6 +1,7 @@
 package com.moon404.gunskills.message;
 
 import com.moon404.gunskills.GunSkills;
+import com.moon404.gunskills.item.skill.SkillItem;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -36,9 +37,14 @@ public class DropItemMessage
                 ServerPlayer player = ctx.get().getSender();
                 Inventory inventory = player.getInventory();
                 ItemStack itemStack = inventory.getItem(content.itemid);
-                if (itemStack.isEmpty()) return;
-                ItemStack drop = itemStack.split(1);
-                player.drop(drop, true);
+                if (itemStack.getItem() instanceof SkillItem item)
+                {
+                    if (item.canUse(player))
+                    {
+                        item.active(player);
+                        item.enterCooldown(player);
+                    }
+                }
             });
             ctx.get().setPacketHandled(true);
         });

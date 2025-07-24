@@ -36,9 +36,8 @@ public class EnterVoid extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         Inventory inventory = player.getInventory();
         int freeBagSlot = getFreeSlot(inventory);
         if (freeBagSlot >= 0)
@@ -62,6 +61,5 @@ public class EnterVoid extends SkillItem
         }
         player.addEffect(new MobEffectInstance(MobEffects.INVISIBILITY, DURATION * 20, 0, false, false, true));
         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, DURATION * 20, 0, false, false, true));
-        return true;
     }
 }

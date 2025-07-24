@@ -21,15 +21,13 @@ public class Snare extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
         SnareEntity snare = new SnareEntity(GunSkillsEntities.SNARE.get(), player.level());
         snare.user = player;
         snare.setPos(player.getEyePosition());
         snare.setNoGravity(true);
         snare.shootFromRotation(player, player.getXRot(), player.getYRot(), 0, 3.2F, 0);
         player.level().addFreshEntity(snare);
-        return true;
     }
 }

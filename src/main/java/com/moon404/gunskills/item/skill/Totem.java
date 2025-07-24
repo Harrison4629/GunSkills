@@ -20,14 +20,12 @@ public class Totem extends SkillItem
     }
 
     @Override
-    public boolean onToss(Player player)
+    public void active(Player player)
     {
-        if (!canUse(player)) return false;
-        if (player.getAbsorptionAmount() == 0) return false;
+        if (player.getAbsorptionAmount() == 0) return;
         TotemEntity totem = new TotemEntity(GunSkillsEntities.TOTEM.get(), player.level());
         totem.setPos(player.position());
         totem.player = player;
         player.level().addFreshEntity(totem);
-        return true;
     }
 }
