@@ -63,6 +63,7 @@ public class SkillBag extends SkillItem
             int rand = counter;
             counter = (counter + 1) % 4;
             player.addItem(new ItemStack(items.get(rand)));
+            player.getInventory().setChanged();
             return false;
         }
         return super.onDroppedByPlayer(itemStack, player);
