@@ -73,7 +73,8 @@ public class SkillItem extends Item
     @OnlyIn(Dist.CLIENT)
     public void appendHoverText(ItemStack pStack, @Nullable Level pLevel, List<Component> pTooltipComponents, TooltipFlag pIsAdvanced)
     {
-        LocalPlayer player = Minecraft.getInstance().player;
+        Minecraft minecraft = Minecraft.getInstance();
+        LocalPlayer player = minecraft.player;
         Inventory inventory = player.getInventory();
         int slot = inventory.findSlotMatchingItem(pStack);
         int slota = GunSkillsConfigs.DROPA_INDEX.get().intValue();
@@ -81,8 +82,8 @@ public class SkillItem extends Item
         int slotc = GunSkillsConfigs.DROPC_INDEX.get().intValue();
         if (this.classType != null)
             pTooltipComponents.add(Component.translatable("skill.gunskills.class.limit").append(this.classType.getDisplay()));
-        if (this.useType == 1 || this.useType == 4)
-            pTooltipComponents.add(Component.translatable("skill.gunskills.use." + this.useType));
+        if (this.useType == 1)
+            pTooltipComponents.add(Component.translatable("skill.gunskills.use.1"));
         else if (this.useType == 2 || this.useType == 3)
             if (slot == slota - 1)
                 pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.2", GunSkillsKeyMappings.DROPA_KEY.getKey().getDisplayName(), Component.translatable("skill.gunskills.use." + this.useType)));
@@ -92,6 +93,8 @@ public class SkillItem extends Item
                 pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.2", GunSkillsKeyMappings.DROPC_KEY.getKey().getDisplayName(), Component.translatable("skill.gunskills.use." + this.useType)));
             else
                 pTooltipComponents.add(Component.translatable("skill.gunskills.tooltip.1", slota, slotb, slotc));
+        else if (this.useType == 4)
+            pTooltipComponents.add(Component.translatable("skill.gunskills.use.4", minecraft.options.keyDrop.getKey().getDisplayName()));
         if (this.cooldown > 0)
             pTooltipComponents.add(Component.translatable("skill.gunskills.cooldown", this.getCooldown(player) / 20));
         pTooltipComponents.addAll(this.tooltips);

@@ -83,7 +83,7 @@
     "skill.gunskills.use.1": "放在副手，被动生效",
     "skill.gunskills.use.2": "立即生效",
     "skill.gunskills.use.3": "命中生效",
-    "skill.gunskills.use.4": "手持时按 Q 扔出生效",
+    "skill.gunskills.use.4": "按 %s 扔出生效",
     "skill.gunskills.cooldown": "冷却时间：%s 秒",
     "skill.gunskills.glow.purify": "上帝之眼效果被净化",
     "skill.gunskills.glow.effect": "扫描敌人数：%s",

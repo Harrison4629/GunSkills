@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.moon404.gunskills.handler.DeathHandler;
 import com.moon404.gunskills.handler.HurtHandler;
+import com.moon404.gunskills.handler.ItemTossHandler;
 import com.moon404.gunskills.handler.KnockbackHandler;
 import com.moon404.gunskills.handler.LoginHandler;
 import com.moon404.gunskills.handler.LogoutHandler;
@@ -59,6 +60,7 @@ public class GunSkills
 
         MinecraftForge.EVENT_BUS.register(DeathHandler.class);
         MinecraftForge.EVENT_BUS.register(HurtHandler.class);
+        MinecraftForge.EVENT_BUS.register(ItemTossHandler.class);
         MinecraftForge.EVENT_BUS.register(LoginHandler.class);
         MinecraftForge.EVENT_BUS.register(LogoutHandler.class);
         MinecraftForge.EVENT_BUS.register(PlaySoundHandler.class);

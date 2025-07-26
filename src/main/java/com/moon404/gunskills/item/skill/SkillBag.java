@@ -51,21 +51,14 @@ public class SkillBag extends SkillItem
         return false;
     }
 
-    @Override
-    public boolean onDroppedByPlayer(ItemStack itemStack, Player player)
+    public void onToss(Player player)
     {
-        if (!player.level().isClientSide())
-        {
-            List<Item> items = rogueItems;
-            if (ClassType.getClass(player) == ClassType.ATTACK) items = attackItems;
-            else if (ClassType.getClass(player) == ClassType.SUPPORT) items = supportItems;
-            else if (ClassType.getClass(player) == ClassType.SCOUT) items = scoutItems;
-            int rand = counter;
-            counter = (counter + 1) % 4;
-            player.addItem(new ItemStack(items.get(rand)));
-            player.getInventory().setChanged();
-            return false;
-        }
-        return super.onDroppedByPlayer(itemStack, player);
+        List<Item> items = rogueItems;
+        if (ClassType.getClass(player) == ClassType.ATTACK) items = attackItems;
+        else if (ClassType.getClass(player) == ClassType.SUPPORT) items = supportItems;
+        else if (ClassType.getClass(player) == ClassType.SCOUT) items = scoutItems;
+        int rand = counter;
+        counter = (counter + 1) % 4;
+        player.addItem(new ItemStack(items.get(rand)));
     }
 }
