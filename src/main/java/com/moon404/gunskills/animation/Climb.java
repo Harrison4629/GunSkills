@@ -49,6 +49,7 @@ public class Climb
 
                     if (!jumping && options.keyJump.isDown())
                     {
+                        jumping = true;
                         Vec3 jumpvec = look.scale(speed * 2);
                         double dy = 0.3;
                         if (player.hasEffect(MobEffects.JUMP)) dy *= 1.2 + 0.2 * player.getEffect(MobEffects.JUMP).getAmplifier();
@@ -61,11 +62,10 @@ public class Climb
                     player.setDeltaMovement(delta.x, 0.1, delta.z);
                 }
             }
-            if (options.keyJump.isDown()) jumping = true;
-            else jumping = false;
             if (player.onGround())
             {
                 tickCount = 0;
+                jumping = false;
             }
         }
     }

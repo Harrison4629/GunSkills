@@ -6,7 +6,7 @@ import net.minecraft.network.chat.Component;
 
 public class Ire extends SkillItem
 {
-    public static final int DURATION = 5;
+    public static final int DURATION = 3;
 
     public Ire(Properties properties)
     {
