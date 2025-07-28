@@ -44,7 +44,7 @@ public class Scan extends SkillItem
         {
             Component component = Component.translatable("skill.gunskills.scan.effect", (int)mindis);
             player.displayClientMessage(component, true);
-            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, DURATION * 20, 0, false, false, false));
+            nearest.addEffect(new MobEffectInstance(MobEffects.GLOWING, DURATION * 20, 0, false, false, true));
             GlowMessage.sendToTeam(player.getTeam(), nearest, DURATION * 20);
         }
     }

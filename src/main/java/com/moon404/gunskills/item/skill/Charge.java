@@ -1,18 +1,21 @@
 package com.moon404.gunskills.item.skill;
 
+import com.moon404.gunskills.init.GunSkillsEffects;
 import com.moon404.gunskills.struct.ClassType;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.player.Player;
 
 public class Charge extends SkillItem
 {
-    public static final int AMOUNT = 25;
+    public static final int AMOUNT = 4;
+    public static final int DURATION = 10;
 
     public Charge(Properties properties)
     {
-        super(properties, 60, 2, ClassType.SUPPORT);
-        tooltips.add(Component.translatable("item.gunskills.charge.tooltip", AMOUNT));
+        super(properties, 40, 2, ClassType.SUPPORT);
+        tooltips.add(Component.translatable("item.gunskills.charge.tooltip", AMOUNT, DURATION));
     }
 
     @Override
@@ -22,13 +25,7 @@ public class Charge extends SkillItem
         {
             if (target.getTeam() == player.getTeam())
             {
-                int oldlevel = target.experienceLevel;
-                target.giveExperiencePoints(AMOUNT * 100);
-                int newlevel = target.experienceLevel;
-                if (newlevel > oldlevel)
-                {
-                    target.setAbsorptionAmount(target.getAbsorptionAmount() + 4);
-                }
+                target.addEffect(new MobEffectInstance(GunSkillsEffects.CHARGE.get(), DURATION * 20, 0, false, false, true));
             }
         }
     }

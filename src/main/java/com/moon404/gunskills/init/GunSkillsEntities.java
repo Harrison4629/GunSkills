@@ -5,7 +5,6 @@ import com.moon404.gunskills.entity.ExhibitEntity;
 import com.moon404.gunskills.entity.HealthBottleEntity;
 import com.moon404.gunskills.entity.LiftEntity;
 import com.moon404.gunskills.entity.PearlEntity;
-import com.moon404.gunskills.entity.ShieldBottleEntity;
 import com.moon404.gunskills.entity.SilenceEntity;
 import com.moon404.gunskills.entity.SmokeEntity;
 import com.moon404.gunskills.entity.SnareEntity;
@@ -27,9 +26,6 @@ public class GunSkillsEntities
     public static final RegistryObject<EntityType<HealthBottleEntity>> HEALTH_BOTTLE =
         REGISTER.register("health_bottle", () ->
             EntityType.Builder.of(HealthBottleEntity::new, MobCategory.MISC).sized(0.0F, 0.0F).clientTrackingRange(0).build("health_bottle"));
-    public static final RegistryObject<EntityType<ShieldBottleEntity>> SHIELD_BOTTLE =
-        REGISTER.register("shield_bottle", () ->
-            EntityType.Builder.of(ShieldBottleEntity::new, MobCategory.MISC).sized(0.0F, 0.0F).clientTrackingRange(0).build("shield_bottle"));
     public static final RegistryObject<EntityType<PearlEntity>> PEARL =
         REGISTER.register("pearl", () ->
             EntityType.Builder.<PearlEntity>of(PearlEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).clientTrackingRange(4).updateInterval(10).build("pearl"));

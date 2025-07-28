@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.moon404.gunskills.GunSkills;
+import com.moon404.gunskills.Utils;
 
 import net.minecraft.Util;
 import net.minecraft.client.Minecraft;
@@ -65,8 +66,8 @@ public class ForgeGuiMixin extends GuiMixin
         float healthMax = Math.max((float) attrMaxHealth.getValue(), Math.max(healthLast, health));
         int absorb = Mth.ceil(player.getAbsorptionAmount());
 
-        int healthRows = Mth.ceil((healthMax + absorb) / 2.0F / 10.0F);
-        int rowHeight = Math.max(10 - (healthRows - 2), 3);
+        int healthRows = 2;
+        int rowHeight = 10;
 
         this.random.setSeed((long) (tickCount * 312871));
 
@@ -81,7 +82,7 @@ public class ForgeGuiMixin extends GuiMixin
             regen = this.tickCount % Mth.ceil(healthMax + 5.0F);
         }
 
-        int totalAbsorb = player.experienceLevel == 0 ? 0 :player.experienceLevel * 2 + 2;
+        int totalAbsorb = Utils.getMaxShield(player) / 2;
         int row = 1;
         int Voffset = 112;
         int fullAbsorb = absorb / 2;

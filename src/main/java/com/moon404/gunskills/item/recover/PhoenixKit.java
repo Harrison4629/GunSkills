@@ -1,5 +1,6 @@
 package com.moon404.gunskills.item.recover;
 
+import com.moon404.gunskills.Utils;
 import com.moon404.gunskills.init.GunSkillsEffects;
 
 import net.minecraft.network.chat.Component;
@@ -31,7 +32,7 @@ public class PhoenixKit extends RecoverItem
                 player.displayClientMessage(Component.translatable("message.gunskills.recover.disable"), true);
                 return stack;
             }
-            float shield = player.experienceLevel * 4 + 4;
+            float shield = Utils.getMaxShield(player);
             player.setAbsorptionAmount(shield);
             player.heal(20);
         }

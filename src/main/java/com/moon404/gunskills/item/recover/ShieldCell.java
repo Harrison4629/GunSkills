@@ -1,5 +1,6 @@
 package com.moon404.gunskills.item.recover;
 
+import com.moon404.gunskills.Utils;
 import com.moon404.gunskills.init.GunSkillsEffects;
 
 import net.minecraft.network.chat.Component;
@@ -32,9 +33,9 @@ public class ShieldCell extends RecoverItem
                 return stack;
             }
             float shield = player.getAbsorptionAmount() + 4;
-            if (shield > player.experienceLevel * 4 + 4)
+            if (shield > Utils.getMaxShield(player))
             {
-                shield = player.experienceLevel * 4 + 4;
+                shield = Utils.getMaxShield(player);
             }
             player.setAbsorptionAmount(shield);
         }

@@ -10,13 +10,14 @@ import net.minecraft.world.entity.player.Player;
 public class HealthBottle extends SkillItem
 {
     public static final int AMOUNT = 2;
-    public static final int DURATION = 2;
+    public static final int DURATION = 4;
 
     public HealthBottle(Properties properties)
     {
-        super(properties, 20, 2, ClassType.SUPPORT);
+        super(properties, 40, 2, ClassType.SUPPORT);
         tooltips.add(Component.translatable("item.gunskills.health_bottle.tooltip.1"));
         tooltips.add(Component.translatable("item.gunskills.health_bottle.tooltip.2", AMOUNT, DURATION));
+        tooltips.add(Component.translatable("item.gunskills.health_bottle.tooltip.3"));
     }
 
     @Override

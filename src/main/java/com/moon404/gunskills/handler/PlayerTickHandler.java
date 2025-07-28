@@ -1,5 +1,6 @@
 package com.moon404.gunskills.handler;
 
+import com.moon404.gunskills.Utils;
 import com.moon404.gunskills.init.GunSkillsItems;
 
 import net.minecraft.world.effect.MobEffects;
@@ -34,6 +35,11 @@ public class PlayerTickHandler
                 player.removeEffect(MobEffects.INVISIBILITY);
                 player.removeEffect(MobEffects.BLINDNESS);
             }
+        }
+
+        if (player.getAbsorptionAmount() > Utils.getMaxShield(player))
+        {
+            player.setAbsorptionAmount(Utils.getMaxShield(player));
         }
     }
 }
