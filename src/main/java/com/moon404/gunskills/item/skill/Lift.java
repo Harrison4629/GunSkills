@@ -9,7 +9,7 @@ import net.minecraft.world.entity.player.Player;
 
 public class Lift extends SkillItem
 {
-    public static final int DURATION = 5;
+    public static final int DURATION = 10;
 
     public Lift(Properties properties)
     {

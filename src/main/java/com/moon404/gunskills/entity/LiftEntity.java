@@ -11,7 +11,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Marker;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 
 import java.util.List;
 
@@ -39,7 +38,6 @@ public class LiftEntity extends Marker
 
             AABB area = new AABB(this.getX() - detectAreaRadius, this.getY(), this.getZ() - detectAreaRadius,
                     this.getX() + detectAreaRadius, this.getY() + detectAreaHeight, this.getZ() + detectAreaRadius);
-
 
             List<ServerPlayer> playersInArea = level.getEntitiesOfClass(ServerPlayer.class, area, player -> !player.isSpectator());
 

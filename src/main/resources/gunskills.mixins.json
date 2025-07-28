@@ -16,7 +16,8 @@
     "client": [
         "GlowingMixin",
         "GuiMixin",
-        "ForgeGuiMixin"
+        "ForgeGuiMixin",
+        "BlindnessFogMixin"
     ],
     "injectors": {
         "defaultRequire": 1
