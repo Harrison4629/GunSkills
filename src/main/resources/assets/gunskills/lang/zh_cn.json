@@ -53,7 +53,7 @@
     "item.gunskills.purify.tooltip.1": "被技能效果命中时",
     "item.gunskills.purify.tooltip.2": "取消该技能的所有目标",
     "item.gunskills.charge": "护盾强化",
-    "item.gunskills.charge.tooltip": "所有队友获得 %s 点空的护盾上限，持续 %s 秒",
+    "item.gunskills.charge.tooltip": "所有队友获得 %s 点护盾上限，持续 %s 秒",
     "item.gunskills.exhibit": "一览无余",
     "item.gunskills.exhibit.tooltip.1": "对落地点半径为 %s 范围的敌人",
     "item.gunskills.exhibit.tooltip.2": "给与 %s 秒发光效果",

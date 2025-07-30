@@ -21,7 +21,7 @@ public class ShieldBottle extends SkillItem
         {
             if (!target.isSpectator() && target.getTeam() == player.getTeam())
             {
-                player.addItem(GunSkillsItems.SHIELD_BATTERY.get().getDefaultInstance());
+                target.addItem(GunSkillsItems.SHIELD_BATTERY.get().getDefaultInstance());
             }
         }
     }

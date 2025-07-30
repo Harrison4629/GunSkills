@@ -26,6 +26,7 @@ public class Charge extends SkillItem
             if (target.getTeam() == player.getTeam())
             {
                 target.addEffect(new MobEffectInstance(GunSkillsEffects.CHARGE.get(), DURATION * 20, 0, false, false, true));
+                target.setAbsorptionAmount(target.getAbsorptionAmount() + AMOUNT);
             }
         }
     }
